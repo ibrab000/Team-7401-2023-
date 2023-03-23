@@ -1,0 +1,80 @@
+{
+  "HALProvider": {
+    "PWM Outputs": {
+      "window": {
+        "visible": true
+      }
+    },
+    "RoboRIO": {
+      "6V Rail": {
+        "open": true
+      }
+    }
+  },
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
+      "/LiveWindow/Ungrouped/PWMSparkMax[13]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMSparkMax[14]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMSparkMax[15]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMSparkMax[18]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMSparkMax[19]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMSparkMax[1]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMSparkMax[3]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMSparkMax[4]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMSparkMax[5]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/SmartDashboard/Auto Selector": "String Chooser",
+      "/SmartDashboard/Default": "String Chooser"
+    },
+    "windows": {
+      "/SmartDashboard/Auto Selector": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/Default": {
+        "window": {
+          "visible": true
+        }
+      }
+    }
+  },
+  "NetworkTables": {
+    "retained": {
+      "SmartDashboard": {
+        "Auto Selector": {
+          "open": true
+        },
+        "open": true
+      }
+    },
+    "transitory": {
+      "SmartDashboard": {
+        "Auto Selector": {
+          "open": true
+        },
+        "Default": {
+          "open": true
+        },
+        "open": true
+      }
+    }
+  },
+  "NetworkTables View": {
+    "visible": false
+  },
+  "Plot": {
+    "Plot <0>": {
+      "plots": [
+        {
+          "height": 332
+        }
+      ],
+      "window": {
+        "visible": false
+      }
+    }
+  }
+}
