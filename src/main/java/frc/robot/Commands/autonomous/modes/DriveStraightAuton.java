@@ -16,7 +16,7 @@ import frc.robot.Subsystems.Drivebase;
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
 public class DriveStraightAuton extends SequentialCommandGroup {
-  
+
   /**
    * Drive straight for X amount of seconds
    */
