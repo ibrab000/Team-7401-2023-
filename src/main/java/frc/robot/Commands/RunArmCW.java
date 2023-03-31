@@ -26,6 +26,6 @@ public class RunArmCW extends InstantCommand {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_intake.setArmSpeed(0.2);
+    m_intake.setArmSpeed(0.05);
   }
 }

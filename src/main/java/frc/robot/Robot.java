@@ -7,9 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -19,13 +17,14 @@ import frc.robot.Commands.NullArm;
 import frc.robot.Commands.RunArmCC;
 import frc.robot.Commands.RunArmCW;
 import frc.robot.Commands.TurnOffIntake;
-import frc.robot.Commands.TurnOnIntake;
+import frc.robot.Commands.IntakeCC;
+import frc.robot.Commands.IntakeCW;
 import frc.robot.Commands.autonomous.commands.SetDrivetrainSpeedForTime;
 import frc.robot.Commands.autonomous.modes.DriveStraightAuton;
 import frc.robot.Commands.autonomous.modes.NoopAuton;
+import frc.robot.Subsystems.Drivebase;
 import frc.robot.Commands.autonomous.commands.Turn90;
 import frc.robot.Commands.autonomous.commands.TurnNegative90;
-import frc.robot.Subsystems.Intake;
 import edu.wpi.first.wpilibj.XboxController;
 
 
@@ -41,7 +40,8 @@ public class Robot extends TimedRobot {
   private Command m_nothing;
   private Command m_turn90;
   private Command m_turnNegative90;
-  private Command m_turnOnIntake;
+  private Command m_intakeCW;
+  private Command m_intakeCC;
   private Command m_turnOffIntake;
   private Command m_runArmCW;
   private Command m_runArmCC;
@@ -74,7 +74,8 @@ public class Robot extends TimedRobot {
     m_setDrivetrainSpeedForTime = new SetDrivetrainSpeedForTime(0.25, 0.25, 1, m_robotContainer.drivebase);
     m_turn90 = new Turn90(m_robotContainer.drivebase);
     m_turnNegative90 = new TurnNegative90(m_robotContainer.drivebase);
-    m_turnOnIntake = new TurnOnIntake(m_robotContainer.drivebase.getIntake());
+    m_intakeCW = new IntakeCW(m_robotContainer.drivebase.getIntake());
+    m_intakeCC = new IntakeCC(m_robotContainer.drivebase.getIntake());
     m_turnOffIntake = new TurnOffIntake(m_robotContainer.drivebase.getIntake());
     m_runArmCW = new RunArmCW(m_robotContainer.drivebase.getIntake());
     m_runArmCC = new RunArmCC(m_robotContainer.drivebase.getIntake());
@@ -85,8 +86,7 @@ public class Robot extends TimedRobot {
     chooser.addOption("SetDrivetrainSpeedForTime", m_setDrivetrainSpeedForTime);
     chooser.addOption("Turn 90", m_turn90);
     chooser.addOption("Turn -90", m_turnNegative90);
-    chooser.addOption("Turn On Intake", m_turnOnIntake);
-    chooser.addOption("Turn Off Intake", m_turnOffIntake);
+    chooser.setDefaultOption("Drive forward", m_driveStraightAuto);
     SmartDashboard.putData("Auto Selector", chooser);
   }
 
@@ -149,20 +149,22 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
     JoystickButton yButton = new JoystickButton(m_xboxController, XboxController.Button.kY.value);
-    JoystickButton xButton = new JoystickButton(m_xboxController, XboxController.Button.kX.value);
+    // JoystickButton xButton = new JoystickButton(m_xboxController, XboxController.Button.kX.value);
     JoystickButton aButton = new JoystickButton(m_xboxController, XboxController.Button.kA.value);
     JoystickButton bButton = new JoystickButton(m_xboxController, XboxController.Button.kB.value);
     JoystickButton lBumper = new JoystickButton(m_xboxController, XboxController.Button.kLeftBumper.value);
     JoystickButton rBumper = new JoystickButton(m_xboxController, XboxController.Button.kRightBumper.value);
     
-    yButton.onTrue(m_turn90);
-    xButton.onTrue(m_turnNegative90);
-    aButton.onTrue(m_turnOnIntake);
-    bButton.onTrue(m_turnOffIntake);
-    lBumper.toggleOnTrue(m_runArmCC);
-    lBumper.toggleOnFalse(m_nullArm);
-    rBumper.toggleOnTrue(m_runArmCW);
-    rBumper.toggleOnFalse(m_nullArm);
+    // yButton.onTrue(m_turn90);
+    // xButton.onTrue(m_turnNegative90);
+
+    // aButton.onTrue(m_intakeCC);
+    // yButton.onTrue(m_intakeCW);
+    // bButton.onTrue(m_turnOffIntake);
+    // lBumper.toggleOnTrue(m_runArmCC);
+    // lBumper.toggleOnFalse(m_nullArm);
+    // rBumper.toggleOnTrue(m_runArmCW);
+    // rBumper.toggleOnFalse(m_nullArm);
   }
   
   /**
@@ -171,7 +173,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     
-    m_robotContainer.drivebase.getDrivetrain().tankDrive(m_xboxController.getLeftY(), m_xboxController.getRightY());
+    m_robotContainer.drivebase.getDrivetrain().tankDrive(m_xboxController.getLeftY()*0.8, m_xboxController.getRightY()*0.8);
     // m_robotContainer.drivebase.getIntake().setArmSpeed(m_xboxController.getRightTriggerAxis());
   }
   

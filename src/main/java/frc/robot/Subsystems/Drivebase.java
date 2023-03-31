@@ -8,6 +8,7 @@
 package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
@@ -18,13 +19,14 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Drivebase extends SubsystemBase {
-  private final PWMSparkMax leftLeader = new PWMSparkMax(Constants.klDT1);
-  private final PWMSparkMax leftFollower = new PWMSparkMax(Constants.klDT2);
-  private final PWMSparkMax rightLeader = new PWMSparkMax(Constants.krDT3);
-  private final PWMSparkMax rightFollower = new PWMSparkMax(Constants.krDT4);
+  public final VictorSP leftLeader = new VictorSP(Constants.klDT1);
+  private final VictorSP leftFollower = new VictorSP(Constants.klDT2);
+  private final VictorSP rightLeader = new VictorSP(Constants.krDT3);
+  private final VictorSP rightFollower = new VictorSP(Constants.krDT4);
   
   private final MotorControllerGroup motorControllerGroupLeft = new MotorControllerGroup(leftLeader, leftFollower);
   private final MotorControllerGroup motorControllerGroupRight = new MotorControllerGroup(rightLeader, rightFollower);
+
 
   private DifferentialDrive drivetrain;
   private Intake intake;
@@ -54,8 +56,6 @@ public class Drivebase extends SubsystemBase {
     leftFollower.equals(leftLeader);
     rightFollower.equals(rightLeader);
 
-    motorControllerGroupLeft.setInverted(true);
-    motorControllerGroupRight.setInverted(true);
 
     drivetrain = new DifferentialDrive(motorControllerGroupLeft, motorControllerGroupRight);
     drivetrain.setMaxOutput(drivetrainMultiplier);

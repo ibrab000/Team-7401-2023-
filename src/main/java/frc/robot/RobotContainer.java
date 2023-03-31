@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Commands.SetDrivetrainSpeedCommand;
 import frc.robot.Commands.TurnOffIntake;
-import frc.robot.Commands.TurnOnIntake;
+import frc.robot.Commands.IntakeCW;
 import frc.robot.Subsystems.Drivebase;
 import frc.robot.Subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;

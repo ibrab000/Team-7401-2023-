@@ -5,22 +5,26 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.Commands.autonomous.commands;
+package frc.robot.Commands;
 
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.Subsystems.Drivebase;
-
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.Subsystems.Intake;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class TurnNegative90 extends SequentialCommandGroup {
+public class IntakeCW extends InstantCommand {
+  private final Intake m_intake;
+  
+  public IntakeCW(Intake intake) {
+    m_intake = intake;
 
-  /**
-   * Turn -90 degrees.
-   */
-  public TurnNegative90(Drivebase drivebase) {
-    super(new SetDrivetrainSpeedForTime(0.5, -.5, 0.775, drivebase));
-    addRequirements(drivebase);
+    addRequirements(intake);
+  }
+
+  // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {
+    m_intake.setIntakeSpeed(0.5);
   }
 }

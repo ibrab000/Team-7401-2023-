@@ -11,8 +11,8 @@ package frc.robot;
 public final class Constants {
     public static int kPoweredV1 = 11;
     public static int kPoweredv2 = 12;
-    public static int kArmMotor = 5;
-    public static int kIntakeMotor = 4;
+    public static int kArmMotor = 5; 
+    public static int kIntakeMotor = 4; 
     public static int klDT1 = 0;
     public static int klDT2 = 1;
     public static int krDT3 = 2;

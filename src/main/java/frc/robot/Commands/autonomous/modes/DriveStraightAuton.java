@@ -21,7 +21,7 @@ public class DriveStraightAuton extends SequentialCommandGroup {
    * Drive straight for X amount of seconds
    */
   public DriveStraightAuton(Drivebase drivebase) {
-    super(new SetDrivetrainSpeedForTime(.5, .5, 1, drivebase));
+    super(new SetDrivetrainSpeedForTime(.2, .2, 1.25, drivebase));
     addRequirements(drivebase);
   }
 }
