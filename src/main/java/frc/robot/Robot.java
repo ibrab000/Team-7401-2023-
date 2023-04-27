@@ -158,13 +158,13 @@ public class Robot extends TimedRobot {
     // yButton.onTrue(m_turn90);
     // xButton.onTrue(m_turnNegative90);
 
-    // aButton.onTrue(m_intakeCC);
-    // yButton.onTrue(m_intakeCW);
-    // bButton.onTrue(m_turnOffIntake);
-    // lBumper.toggleOnTrue(m_runArmCC);
-    // lBumper.toggleOnFalse(m_nullArm);
-    // rBumper.toggleOnTrue(m_runArmCW);
-    // rBumper.toggleOnFalse(m_nullArm);
+    aButton.onTrue(m_intakeCC);
+    yButton.onTrue(m_intakeCW);
+    bButton.onTrue(m_turnOffIntake);
+    lBumper.toggleOnTrue(m_runArmCC);
+    lBumper.toggleOnFalse(m_nullArm);
+    rBumper.toggleOnTrue(m_runArmCW);
+    rBumper.toggleOnFalse(m_nullArm);
   }
   
   /**
@@ -173,7 +173,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     
-    m_robotContainer.drivebase.getDrivetrain().tankDrive(m_xboxController.getLeftY()*0.8, m_xboxController.getRightY()*0.8);
+    m_robotContainer.drivebase.getDrivetrain().tankDrive(m_xboxController.getLeftY(), m_xboxController.getRightY());
     // m_robotContainer.drivebase.getIntake().setArmSpeed(m_xboxController.getRightTriggerAxis());
   }
   

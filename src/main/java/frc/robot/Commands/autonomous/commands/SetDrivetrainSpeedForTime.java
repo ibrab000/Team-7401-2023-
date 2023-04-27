@@ -11,9 +11,11 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.Subsystems.Drivebase;
+import frc.robot.Subsystems.Intake;
 
 public class SetDrivetrainSpeedForTime extends CommandBase {
   private final Drivebase drivebase;
+  private final Intake intake;
   private final double leftSpeed, rightSpeed;
   private final double durationS;
   private double startTime;
@@ -21,15 +23,16 @@ public class SetDrivetrainSpeedForTime extends CommandBase {
   /**
    * Creates a new SetDrivetrainSpeedForTime.
    */
-  public SetDrivetrainSpeedForTime(double leftSpeed, double rightSpeed, double duration, Drivebase drivebase) {
-    this.drivebase = drivebase;
+  public SetDrivetrainSpeedForTime(double leftSpeed, double rightSpeed, double duration, Drivebase drivebase, Intake intake) {
     this.leftSpeed = leftSpeed;
+    this.drivebase = drivebase;
     this.rightSpeed = rightSpeed;
+    this.intake = intake;
 
     durationS = duration;
     
     addRequirements(drivebase);
-    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(intake);
   }
 
   // Called when the command is initially scheduled.

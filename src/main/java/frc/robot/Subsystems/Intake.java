@@ -42,4 +42,7 @@ public class Intake extends SubsystemBase {
     }
     m_armMotor.set(speed);
   }
+  public void manualControl(double rawAxis, double rawAxis2, boolean button) {
+    System.out.println(String.format("Drivetrain raw: X %.2f Y %.2f", rawAxis, rawAxis2));
+  }
 }

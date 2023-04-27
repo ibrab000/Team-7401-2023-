@@ -65,15 +65,20 @@ public class Drivebase extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    
   }
-
+  public void setRobotSpeed(double speed) {
+    if(speed != 0) {
+      speed = 0;
+    }
+    motorControllerGroupLeft.set(speed);
+    motorControllerGroupRight.set(speed);
+  }
   public void manualControl(double rawAxis, double rawAxis2, boolean button) {
     System.out.println(String.format("Drivetrain raw: X %.2f Y %.2f", rawAxis, rawAxis2));
     
     
     drivetrain.tankDrive(rawAxis, rawAxis2);
-
     
   }
 
